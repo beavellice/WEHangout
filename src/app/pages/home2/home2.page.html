@@ -1,0 +1,77 @@
+<ion-header>
+  
+  <ion-toolbar>
+    <div class="search">
+     <!-- <ion-input placeholder="Search" (ionFocus)="toggleSearch()"[class.active-search]="searching" 
+      [class.inactive-search]="!searching">
+        <ion-icon name="search"></ion-icon>
+      </ion-input>
+
+      <ion-button fill="clear" color="dark" size="small" [ngClass]="{'visible-btn': searching, 'hidden-btn': !searching}">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+      -->
+      <ion-searchbar></ion-searchbar>
+    </div>
+    
+    
+    <ion-buttons slot="start">
+    <ion-menu-button menu="first" color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+        <ion-button shape="round" color="dark" size="large">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-button>
+      
+    </ion-buttons>
+    
+  </ion-toolbar>
+ 
+</ion-header>
+
+<ion-content>
+
+  
+
+  <ion-list>
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+          <img src="https://parcocolosseo.it/sito/wp-content/uploads/2018/11/02_COLOSSEO_ELZEVIRO.jpg">
+          <ion-card-title>Card Title</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+        
+ 
+      </ion-card>
+    </ion-item>
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+          <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
+          <ion-card-title>Card Title</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+        . Wash your spirit clean.
+        </ion-card-content>
+        <ion-card-content>
+         
+        </ion-card-content>
+ 
+      </ion-card>
+    </ion-item>
+
+    
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="tertiary">
+      <ion-icon name="map" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+ 
+
+</ion-content>

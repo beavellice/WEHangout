@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+    <ion-button color="primary"> 
+      <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button color="primary">Sign up</ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="header">
+    <h1>Sign Up</h1>
+  </div>
+  
+  <form id="form">
+    <app-input  placeholder="Username"></app-input>
+    <app-input  placeholder="Email"></app-input>
+    <app-input  type="password" placeholder="Password"></app-input>
+    <app-input  placeholder="Nome"></app-input>
+    <app-input  placeholder="Cognome"></app-input>
+    <app-input  type="date" placeholder="Data di Nascita"></app-input>
+    <ion-list id="list">
+      <ion-item id="listItem" >
+        <ion-label>Citta</ion-label>
+        <ion-select   okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="roma">Roma</ion-select-option>
+          <ion-select-option value="milano">Milano</ion-select-option>
+          <ion-select-option value="torino">Torino</ion-select-option>
+          <ion-select-option value="napoli">Napoli</ion-select-option>
+          <ion-select-option value="amendola">Amendola</ion-select-option>
+          <ion-select-option value="pescara">Pescara</ion-select-option>
+          <ion-select-option value="catanzaro">Catanzaro</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-button routerLink="/event-list" expand="block" shape="round">Sign up</ion-button>
+  </form>
+</ion-content>

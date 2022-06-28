@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>eventList</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first" color="dark"></ion-menu-button>
+      </ion-buttons>
+      <ion-buttons slot="end" >
+          <ion-button routerLink="/profilo" shape="round" color="dark" size="large">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </ion-button>
+        
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+          <img src="https://parcocolosseo.it/sito/wp-content/uploads/2018/11/02_COLOSSEO_ELZEVIRO.jpg">
+          <ion-card-title>Card Title</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+         
+          <ion-chip color="primary">
+            <ion-label color="dark">Party</ion-label>
+          </ion-chip>
+          <ion-chip color="danger">
+            <ion-label color="dark">History</ion-label>
+          </ion-chip>
+       
+        </ion-card-content>
+
+        <ion-card-content >
+          <ion-button color="tertiary">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <ion-button color="success" class="buttons">
+            <ion-icon name="pencil"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+      
+    </ion-item>
+    <ion-item>
+      <ion-card routerLink="/detail-poi">
+        
+        <ion-card-header>
+          <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
+          <ion-card-title>Card Title</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+        . Wash your spirit clean.
+        </ion-card-content>
+        <ion-card-content >
+          <ion-button color="tertiary">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <ion-button color="success" class="buttons">
+            <ion-icon name="pencil"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+
+    
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button color="tertiary" routerLink="/aggiungi-evento">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+   
+ 
+  
+</ion-content>
