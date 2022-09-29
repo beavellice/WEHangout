@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first2" color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-button routerLink="/profilo" shape="round" color="dark" size="large">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
+      <ion-card-title>Nome evento</ion-card-title>
+
+    </ion-card-header>
+
+
+    <ion-card-content>
+      <ion-item routerLink="/profilo-public">
+        <ion-thumbnail slot="start">
+          <img src="assets/images/pippo.png">
+        </ion-thumbnail>
+        <ion-label>Profilo </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+      </ion-item>
+
+      <ion-chip disabled="true" >
+        <ion-label>Lunedi 25 maggio 17:00</ion-label>
+      </ion-chip>
+      <ion-chip disabled="true">
+        <ion-label>Martedi 3 giugno 21:00</ion-label>
+      </ion-chip>
+      <ion-chip disabled="true">
+        <ion-label>Giovedi 8 luglio 18:00</ion-label>
+      </ion-chip>
+
+      <ion-item>
+        <ion-label>Luogo</ion-label>
+      </ion-item>
+      <ion-chip disabled="true">
+        <ion-label>Via verdi, 21, Roma</ion-label>
+      </ion-chip>
+
+
+
+      <ion-item>
+        <ion-label>Info</ion-label>
+      </ion-item>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Cras mattis ligula quis eros interdum, non pharetra magna volutpat.
+      Curabitur in sem et justo auctor bibendum eget a nisl.
+
+
+
+
+
+
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
