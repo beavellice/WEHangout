@@ -2,8 +2,7 @@ import { Injectable ,NgZone} from '@angular/core';
 
 import {AngularFirestore} from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import {AngularFireAuth} from '@angular/fire/compat/auth';
-import {signInWithEmailAndPassword, Auth} from '@angular/fire/auth';
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword, Auth} from '@angular/fire/auth';
 import firebase from 'firebase/compat';
 
 
@@ -14,7 +13,6 @@ import firebase from 'firebase/compat';
 
 export class AuthService {
 
-  userData: any;
   constructor(
 
     public authentication: Auth,
@@ -23,6 +21,20 @@ export class AuthService {
   ) {}
 
  //qui si usano le promise
+
+  async register({email,password}){
+    try {
+      const user = await createUserWithEmailAndPassword(
+        this.authentication,
+        email,
+        password
+      );
+      return user;
+    } catch (e){
+      return null;
+    }
+
+  }
 
   async login({email, password}) {
    try {

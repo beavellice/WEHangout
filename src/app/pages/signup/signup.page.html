@@ -1,13 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-    <ion-button color="primary"> 
+    <ion-button color="primary" routerLink="/login">
       <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
     </ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="primary">Sign up</ion-button>
-      </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -15,7 +13,7 @@
   <div id="header">
     <h1>Sign Up</h1>
   </div>
-  
+
   <form id="form">
     <app-input  placeholder="Username"></app-input>
     <app-input  placeholder="Email"></app-input>
