@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "wehgproject": {
+      "hosting": {
+        "app": [
+          "wehgproject"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wehgproject"
+  }
+}
