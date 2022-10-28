@@ -1,3 +1,4 @@
 <ion-item class="ion-margin-botom">
  <ion-input [type]="type" [placeholder]="placeholder"></ion-input>
+ <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email non valida</ion-note>
 </ion-item>

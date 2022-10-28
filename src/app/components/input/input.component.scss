@@ -1,7 +1,9 @@
 ion-item{
     border-radius: 50px;
-    height: 55px;
-    box-shadow: 1px 8px 8px 0px grey;
+    height: 55px; 
+
+   // box-shadow: 1px 8px 8px 0px grey;
+    
     --highlight-height: 0px;
     margin-bottom: 7%;
 
@@ -15,7 +17,7 @@ ion-item{
     a {
         font-size: 17px;
         letter-spacing: 0.5px;
-        text-decoration: none;
+        //text-decoration: none;
        
     }
 }
