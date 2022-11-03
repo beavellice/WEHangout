@@ -16,10 +16,12 @@
     <h1>Sign Up</h1>
   </div>
 
-  <form id="form">
+  <form id="form" [formGroup]="userForm" (ngSubmit)="makeUser()">
     <ion-input  placeholder="Username"></ion-input>
-    <ion-input  placeholder="Email"></ion-input>
-    <ion-input  type="password" placeholder="Password"></ion-input>
+    <ion-input  placeholder="Email" #email
+                required></ion-input>
+    <ion-input  type="password" placeholder="Password" #password
+                required></ion-input>
     <ion-label>Data di nascita</ion-label>
     <ion-input  type="date" placeholder="Data di Nascita"></ion-input>
     <ion-list id="list">
@@ -37,6 +39,6 @@
       </ion-item>
     </ion-list>
 
-    <ion-button routerLink="/home" expand="block" shape="round">Sign up</ion-button>
+    <ion-button (click)="signUp(email, password)" expand="block" shape="round" >Sign up</ion-button>
   </form>
 </ion-content>
