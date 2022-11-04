@@ -50,10 +50,10 @@ export class AuthenticationService {
     );
     const userData: User = {
       id: user.id,
-      name: user.name,
-      surname: user.surname,
+      username: user.username,
       email: user.email,
       password: user.password,
+      city: user.city
     };
     return userRef.set(userData, {
       merge: true,

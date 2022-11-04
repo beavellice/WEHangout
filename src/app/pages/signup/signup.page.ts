@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Router} from '@angular/router';
+import {User} from '../../model/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -14,16 +15,17 @@ export class SignupPage implements OnInit {
   constructor(
     //private aptUser: UserService,
     public authService: AuthenticationService,
+    public user: User,
     public router: Router,
     public fb: FormBuilder
   ) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      name: [''],
-      surname: [''],
+      username: [''],
       email: [''],
       password: [''],
+      city: ['']
     });
   }
   signUp(email, password) {
@@ -38,6 +40,12 @@ export class SignupPage implements OnInit {
   }
   //creo lo user da mettere nel db
   makeUser() {
+    if (!this.userForm.valid) {
+      return false;
+    } else {
+      this.user.username = this.userForm.value.username;
+
+    }
     /*
     if (!this.userForm.valid) {
       return false;
