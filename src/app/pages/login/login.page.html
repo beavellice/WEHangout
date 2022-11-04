@@ -1,9 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
 
-    <ion-buttons  slot="end">
-      <ion-button type="button"  color="primary" routerLink="/signup">Sign up</ion-button>
-    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -28,6 +26,12 @@
    <ion-button
      (click)="logIn(email,password)"
      type="submit"  expand="block" shape="round" >Login</ion-button>
+    <ion-label>
+      You don't have an account? <a [routerLink]="['/signup']">Signup</a>
+    </ion-label>
+
+
  </form>
+
 
 </ion-content>

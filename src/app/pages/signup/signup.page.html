@@ -1,13 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary">
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      <ion-button color="primary" routerLink="/login">
+        <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button color="primary" routerLink="/login">Login</ion-button>
-    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -17,17 +15,31 @@
   </div>
 
   <form id="form" [formGroup]="userForm" (ngSubmit)="makeUser()">
-    <ion-input  placeholder="Username"></ion-input>
-    <ion-input  placeholder="Email" #email
-                required></ion-input>
-    <ion-input  type="password" placeholder="Password" #password
-                required></ion-input>
-    <ion-label>Data di nascita</ion-label>
-    <ion-input  type="date" placeholder="Data di Nascita"></ion-input>
+    <ion-item>
+      <ion-input
+        type="text"
+        #username
+        placeholder="Username" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        type="email"
+        placeholder="Email"
+        #email
+        required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input
+        type="password"
+        placeholder="Password" #password
+        required></ion-input>
+    </ion-item>
+
+
     <ion-list id="list">
       <ion-item id="listItem" >
-        <ion-label>Citta</ion-label>
-        <ion-select   okText="Okay" cancelText="Dismiss">
+        <ion-label>Città</ion-label>
+        <ion-select  #city okText="Okay" cancelText="Dismiss">
           <ion-select-option value="roma">Roma</ion-select-option>
           <ion-select-option value="milano">Milano</ion-select-option>
           <ion-select-option value="torino">Torino</ion-select-option>
