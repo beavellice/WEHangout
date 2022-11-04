@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Router} from '@angular/router';
 import {User} from '../../model/user.model';
+import {DataService} from "../../services/data.service";
+import {user} from "@angular/fire/auth";
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +17,7 @@ export class SignupPage implements OnInit {
   constructor(
     //private aptUser: UserService,
     public authService: AuthenticationService,
-    public user: User,
+    public dataService: DataService,
     public router: Router,
     public fb: FormBuilder
   ) { }
@@ -32,6 +34,7 @@ export class SignupPage implements OnInit {
     this.authService
       .registerUser(email.value, password.value)
       .then((res) => {
+        this.dataService.createUser(this.userForm.value);
         this.router.navigateByUrl('/home',{replaceUrl:true});
       })
       .catch((error) => {
@@ -40,12 +43,7 @@ export class SignupPage implements OnInit {
   }
   //creo lo user da mettere nel db
   makeUser() {
-    if (!this.userForm.valid) {
-      return false;
-    } else {
-      this.user.username = this.userForm.value.username;
 
-    }
     /*
     if (!this.userForm.valid) {
       return false;

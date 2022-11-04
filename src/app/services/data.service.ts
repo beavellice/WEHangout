@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 
-import {Firestore,collectionData} from '@angular/fire/firestore';
+import {Firestore, collectionData, addDoc} from '@angular/fire/firestore';
 import {collection} from '@firebase/firestore';
+import {User} from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class DataService {
   getEvents() {
     const eventsRef = collection(this.firestore, 'evento');
     return collectionData(eventsRef);
+  }
+  createUser(user: User){
+    const userRef = collection(this.firestore, 'user');
+    return addDoc(userRef, user );
   }
 }
