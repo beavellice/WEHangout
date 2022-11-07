@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { Injectable, NgZone } from '@angular/core';
-import { User } from '../model/user.model';
-import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import {
-  AngularFirestore,
-  AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import {Injectable, NgZone} from '@angular/core';
+import {Router} from '@angular/router';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
+import {AngularFirestore,} from '@angular/fire/compat/firestore';
+import {getAuth, onAuthStateChanged} from '@angular/fire/auth';
+
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class AuthenticationService {
   userData: any;
   constructor(
@@ -18,6 +18,7 @@ export class AuthenticationService {
     public router: Router,
     public ngZone: NgZone
   ) {
+    /*
     this.ngFireAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -28,6 +29,7 @@ export class AuthenticationService {
         JSON.parse(localStorage.getItem('user'));
       }
     });
+     */
   }
   // Login in with email/password
   signIn(email, password) {
@@ -37,32 +39,20 @@ export class AuthenticationService {
   registerUser(email, password) {
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
   }
-  // Returns true when user is looged in
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null ? true : false;
+  getCurrentUser(){
+    const at  = getAuth();
+    const user = at.currentUser;
+   return user.email;
   }
 
+
+
   // Store user in localStorage
-  setUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afStore.doc(
-      `users/${user.uid}`
-    );
-    const userData: User = {
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      password: user.password,
-      city: user.city
-    };
-    return userRef.set(userData, {
-      merge: true,
-    });
-  }
+
   // Sign-out
   async signOut() {
     await this.ngFireAuth.signOut();
-    localStorage.removeItem('user');
+    //localStorage.removeItem('user');
     this.router.navigate(['login']);
   }
 }

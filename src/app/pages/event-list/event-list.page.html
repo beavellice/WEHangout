@@ -15,23 +15,33 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let event of events">
       <ion-card>
         <ion-card-header>
           <img src="https://parcocolosseo.it/sito/wp-content/uploads/2018/11/02_COLOSSEO_ELZEVIRO.jpg">
-          <ion-card-title>Card Title</ion-card-title>
+          <ion-card-title>{{event.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-
-          <ion-chip color="primary">
-            <ion-label color="dark">Party</ion-label>
-          </ion-chip>
-          <ion-chip color="danger">
-            <ion-label color="dark">History</ion-label>
-          </ion-chip>
-
+         <h2><ion-icon name="business" slot="start" size="small"></ion-icon> City: <b>{{event.city}}</b></h2>
+          <h2><ion-icon name="navigate" slot="start" size="small"></ion-icon> Address: <b id="address">{{event.address}}</b></h2>
+            <h2 *ngIf="event.date"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
+            <ion-list *ngFor="let date of event.date">
+              <!-- <ion-icon name="calendar" slot="start"></ion-icon>
+               <ion-icon name="calendar-number" slot="start"></ion-icon>
+              <ion-icon name="today" slot="start"></ion-icon>
+               <ion-icon name="time" slot="start"></ion-icon>-->
+              <ion-label id="dates"><ion-icon name="arrow-forward-circle" slot="start"></ion-icon> {{date}}</ion-label>
+            </ion-list>
+            <ion-grid>
+              <ion-row >
+                <ion-col *ngFor="let tag of event.tags">
+                  <ion-chip color="danger">
+                    <ion-label color="dark">{{tag}}</ion-label>
+                  </ion-chip>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
         </ion-card-content>
-
         <ion-card-content >
           <ion-button color="danger">
             <ion-icon name="trash"></ion-icon>
@@ -41,11 +51,10 @@
           </ion-button>
         </ion-card-content>
       </ion-card>
-
     </ion-item>
+
     <ion-item>
       <ion-card routerLink="/detail-poi">
-
         <ion-card-header>
           <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
           <ion-card-title>Card Title</ion-card-title>

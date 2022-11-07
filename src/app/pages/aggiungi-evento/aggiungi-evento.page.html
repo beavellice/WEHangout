@@ -1,8 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Evento</ion-title>
+
     <ion-buttons slot="start">
-      <ion-menu-button menu="first" color="dark"></ion-menu-button>
+      <ion-menu-button menuId="first2" color="dark"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end" >
       <ion-button shape="round" color="dark" size="large">
@@ -16,28 +17,70 @@
 <ion-content>
 
 
-
+ <form [formGroup]="eventForm" (ngSubmit)="createEvent()" >
+   <!--
   <ion-button>
     <ion-label >Add foto</ion-label>
-  </ion-button>
+  </ion-button> -->
 
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input
+    type="text"
+    formControlName="title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea
+      placeholder="Type something here"
+      formControlName="description"
+      [autoGrow]="true"></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-select  formControlName="city" placeholder="Select a city" okText="Okay" cancelText="Dismiss">
+      <ion-select-option value="Roma">Roma</ion-select-option>
+      <ion-select-option value="Milano">Milano</ion-select-option>
+      <ion-select-option value="Torino">Torino</ion-select-option>
+      <ion-select-option value="Napoli">Napoli</ion-select-option>
+      <ion-select-option value="Amendola">Amendola</ion-select-option>
+      <ion-select-option value="Pescara">Pescara</ion-select-option>
+      <ion-select-option value="Catanzaro">Catanzaro</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Address</ion-label>
+    <ion-input
+      type="text"
+      formControlName="address"
+      placeholder="Ex: Via Roma,1"
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-select  formControlName="category" placeholder="Select a category" okText="Okay" cancelText="Cancel">
+      <ion-select-option value="Evento">Evento</ion-select-option>
+      <ion-select-option value="Luogo">Luogo</ion-select-option>
+    </ion-select>
+  </ion-item>
 
-  <ion-item class="b">
-    <ion-label position="floating">Description</ion-label>
-    <ion-input></ion-input>
+    <ion-item>
+      <ion-select formControlName="tags" placeholder="Select tags" [multiple]="true">
+        <ion-select-option value="Concert">Concert</ion-select-option>
+        <ion-select-option value="History">History</ion-select-option>
+        <ion-select-option value="Party">Party</ion-select-option>
+        <ion-select-option value="Food">Food</ion-select-option>
+        <ion-select-option value="Music">Music</ion-select-option>
+        <ion-select-option value="Art">Art</ion-select-option>
+      </ion-select>
+    </ion-item>
+  <ion-item>
+    <ion-label position="floating">Date and Time</ion-label>
+    <ion-input [clearOnEdit]="true" placeholder="Ex: Lunedì 2 , 20:15" #date></ion-input>
+    <ion-button type="button" slot="end" (click)="addDate(date)">Add</ion-button>
   </ion-item>
-  <ion-item class="b">
-    <ion-label position="floating">Description</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-  <ion-item class="b">
-    <ion-label position="floating">Description</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-  <ion-item class="a">
-    <ion-label position="floating">Description</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
+
+   <ion-button type="submit"> Submit</ion-button>
+ </form>
+
 
 
 </ion-content>

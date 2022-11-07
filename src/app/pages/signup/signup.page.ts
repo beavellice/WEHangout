@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Router} from '@angular/router';
-import {User} from '../../model/user.model';
-import {DataService} from "../../services/data.service";
-import {user} from "@angular/fire/auth";
+import {DataService} from '../../services/data.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -41,22 +40,6 @@ export class SignupPage implements OnInit {
         window.alert(error.message);
       });
   }
-  //creo lo user da mettere nel db
-  makeUser() {
 
-    /*
-    if (!this.userForm.valid) {
-      return false;
-    } else {
-      this.aptUser
-        .createUser(this.userForm.value)
-        .then((res) => {
-          console.log(res);
-          this.userForm.reset();
-          this.router.navigate(['/tabs']);
-        })
-        .catch((error) => console.log(error));
-    }*/
-  }
 
 }
