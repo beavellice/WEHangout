@@ -15,16 +15,18 @@ export class EventListPage implements OnInit {
   constructor(
     private dataService: DataService,
     private authService: AuthenticationService,
-  ) {
+  ) {}
+  deleteEvent(id){
+    return this.dataService.deleteEvent(id);
+  }
+
+  ngOnInit() {
     this.dataService.getUserByEmail(this.authService.getCurrentUser()).subscribe(res => {
       this.user =res.pop();
       this.dataService.getEventsByUser(this.user.username).subscribe(res2 =>{
         this.events = res2;
       });
     });
-  }
-
-  ngOnInit() {
   }
 
 }

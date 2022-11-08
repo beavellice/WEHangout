@@ -16,8 +16,8 @@
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let event of events">
-      <ion-card>
-        <ion-card-header>
+      <ion-card >
+        <ion-card-header routerLink="/detail-poi" [queryParams]="{id: event.id}">
           <img src="https://parcocolosseo.it/sito/wp-content/uploads/2018/11/02_COLOSSEO_ELZEVIRO.jpg">
           <ion-card-title>{{event.title}}</ion-card-title>
         </ion-card-header>
@@ -25,7 +25,7 @@
          <h2><ion-icon name="business" slot="start" size="small"></ion-icon> City: <b>{{event.city}}</b></h2>
           <h2><ion-icon name="navigate" slot="start" size="small"></ion-icon> Address: <b id="address">{{event.address}}</b></h2>
             <h2 *ngIf="event.date"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
-            <ion-list *ngFor="let date of event.date">
+            <ion-list *ngFor="let date of event.dates">
               <!-- <ion-icon name="calendar" slot="start"></ion-icon>
                <ion-icon name="calendar-number" slot="start"></ion-icon>
               <ion-icon name="today" slot="start"></ion-icon>
@@ -43,10 +43,10 @@
             </ion-grid>
         </ion-card-content>
         <ion-card-content >
-          <ion-button color="danger">
+          <ion-button color="danger" type="button" (click)="deleteEvent(event.id)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
-          <ion-button color="success" class="buttons">
+          <ion-button color="success" class="buttons" routerLink="/update-poi" [queryParams]="{id: event.id}">
             <ion-icon name="pencil"></ion-icon>
           </ion-button>
         </ion-card-content>

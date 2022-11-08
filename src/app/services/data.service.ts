@@ -1,6 +1,16 @@
 import {Injectable} from '@angular/core';
 
-import {Firestore, collectionData, addDoc, query, where} from '@angular/fire/firestore';
+import {
+  Firestore,
+  collectionData,
+  addDoc,
+  query,
+  where,
+  doc,
+  docData,
+  deleteDoc,
+  updateDoc, deleteField
+} from '@angular/fire/firestore';
 import {collection, Query} from '@firebase/firestore';
 import {User} from '../model/user.model';
 import {Event} from '../model/event.model';
@@ -21,11 +31,30 @@ export class DataService {
   }
   getEventsByUser(username: string): Observable<any> {
     const q = query(collection(this.firestore, 'evento'), where('username', '==', username));
-    return collectionData(q) as Observable<any>;
+    return collectionData(q,{idField: 'id'}) as Observable<any>;
   }
   getUserByEmail(email: string): Observable<any[]>{
     const q = query(collection(this.firestore, 'user'), where('email', '==', email));
-    return collectionData(q) as Observable<any[]>;
+    return collectionData(q,{idField: 'id'}) as Observable<any[]>;
+  }
+  getEventByID(id): Observable<any[]>{
+    const eventRef = doc(this.firestore, `evento/${id}`);
+    return docData(eventRef,{idField: 'id'}) as Observable<any[]>;
+  }
+  deleteEvent(id) {
+    const eventDocRef = doc(this.firestore, `evento/${id}`);
+    return deleteDoc(eventDocRef);
+  }
+  updateEvent(event: Event){
+    const eventDocRef = doc(this.firestore, `evento/${event.id}`);
+    return updateDoc(eventDocRef,
+      {title: event.title, description: event.description, city: event.city, address: event.address,
+        category:event.category, tags: event.tags, dates:event.dates, username: event.username});
+  }
+
+  deleteDates(id){
+    const  eventDocRef = doc(this.firestore, `evento/${id}`);
+    return updateDoc(eventDocRef, {dates: deleteField()});
   }
 
 

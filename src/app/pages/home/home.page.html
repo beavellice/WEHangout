@@ -23,12 +23,19 @@
 
 <ion-content>
 
+  <ion-item *ngIf="events.length === 0" lines="none">
+    <p>There aren't events on your city at the moment.</p>
+  </ion-item>
+
+
 
   <ion-list>
 
 
+
+
     <ion-item *ngFor="let event of events" >
-      <ion-card>
+      <ion-card routerLink="/detail-poi" [queryParams]="{id: event.id}">
         <ion-card-header>
           <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
           <ion-card-title> {{event.title}}</ion-card-title>

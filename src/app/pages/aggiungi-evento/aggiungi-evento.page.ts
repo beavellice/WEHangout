@@ -3,7 +3,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {DataService} from '../../services/data.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {User} from "../../model/user.model";
+import {User} from '../../model/user.model';
 
 @Component({
   selector: 'app-aggiungi-evento',
@@ -11,7 +11,7 @@ import {User} from "../../model/user.model";
   styleUrls: ['./aggiungi-evento.page.scss'],
 })
 export class AggiungiEventoPage implements OnInit {
-  dates = [];
+  dates1 = [];
   eventForm: FormGroup;
   user: User;
 
@@ -30,16 +30,16 @@ export class AggiungiEventoPage implements OnInit {
       address: [''],
       category: [''],
       tags: [''],
-      date: [''],
+      dates: [''],
       username: ['']
     });
   }
   addDate(date){
-    this.dates.push(date.value);
-    console.log(this.dates);
+    this.dates1.push(date.value);
+    console.log(this.dates1);
   }
   createEvent(){
-    this.eventForm.value.date= this.dates;
+    this.eventForm.value.dates= this.dates1;
     this.dataService.getUserByEmail(this.authService.getCurrentUser()).subscribe(res => {
       this.user =res.pop();
       this.eventForm.value.username= this.user.username;

@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'profilo-public',
     loadChildren: () => import('./pages/profilo-public/profilo-public.module').then( m => m.ProfiloPublicPageModule)
   },
+  {
+    path: 'update-poi',
+    loadChildren: () => import('./pages/update-poi/update-poi.module').then(m => m.UpdatePoiPageModule)
+  },
 ];
 
 @NgModule({
