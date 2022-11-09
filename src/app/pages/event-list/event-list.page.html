@@ -24,8 +24,8 @@
         <ion-card-content>
          <h2><ion-icon name="business" slot="start" size="small"></ion-icon> City: <b>{{event.city}}</b></h2>
           <h2><ion-icon name="navigate" slot="start" size="small"></ion-icon> Address: <b id="address">{{event.address}}</b></h2>
-            <h2 *ngIf="event.date"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
-            <ion-list *ngFor="let date of event.dates">
+            <h2 *ngIf="(event.dates).length > 0"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
+            <ion-list *ngFor="let date of event.datestime">
               <!-- <ion-icon name="calendar" slot="start"></ion-icon>
                <ion-icon name="calendar-number" slot="start"></ion-icon>
               <ion-icon name="today" slot="start"></ion-icon>

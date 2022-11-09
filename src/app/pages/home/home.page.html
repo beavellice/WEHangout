@@ -29,12 +29,9 @@
 
 
 
-  <ion-list>
+  <ion-list *ngFor="let event of events">
 
-
-
-
-    <ion-item *ngFor="let event of events" >
+    <ion-item  >
       <ion-card routerLink="/detail-poi" [queryParams]="{id: event.id}">
         <ion-card-header>
           <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">

@@ -9,7 +9,7 @@ import {
   doc,
   docData,
   deleteDoc,
-  updateDoc, deleteField
+  updateDoc, deleteField, limit
 } from '@angular/fire/firestore';
 import {collection, Query} from '@firebase/firestore';
 import {User} from '../model/user.model';
@@ -26,11 +26,12 @@ export class DataService {
     return collectionData(userRef, {idField: 'id'});
   }
   getEventsByCity(city: string): Observable<any> {
-    const q = query(collection(this.firestore, 'evento'), where('city','==',city));
+    const userRef = collection(this.firestore, 'event');
+    const q = query(userRef, where('city','==',city));
     return collectionData(q,{idField: 'id'}) as Observable<any>;
   }
   getEventsByUser(username: string): Observable<any> {
-    const q = query(collection(this.firestore, 'evento'), where('username', '==', username));
+    const q = query(collection(this.firestore, 'event'), where('username', '==', username));
     return collectionData(q,{idField: 'id'}) as Observable<any>;
   }
   getUserByEmail(email: string): Observable<any[]>{
@@ -38,23 +39,23 @@ export class DataService {
     return collectionData(q,{idField: 'id'}) as Observable<any[]>;
   }
   getEventByID(id): Observable<any[]>{
-    const eventRef = doc(this.firestore, `evento/${id}`);
+    const eventRef = doc(this.firestore, `event/${id}`);
     return docData(eventRef,{idField: 'id'}) as Observable<any[]>;
   }
   deleteEvent(id) {
-    const eventDocRef = doc(this.firestore, `evento/${id}`);
+    const eventDocRef = doc(this.firestore, `event/${id}`);
     return deleteDoc(eventDocRef);
   }
   updateEvent(event: Event){
-    const eventDocRef = doc(this.firestore, `evento/${event.id}`);
+    const eventDocRef = doc(this.firestore, `event/${event.id}`);
     return updateDoc(eventDocRef,
       {title: event.title, description: event.description, city: event.city, address: event.address,
-        category:event.category, tags: event.tags, dates:event.dates, username: event.username});
+        category:event.category, tags: event.tags, dates:event.dates, datestime: event.datestime, username: event.username});
   }
 
   deleteDates(id){
-    const  eventDocRef = doc(this.firestore, `evento/${id}`);
-    return updateDoc(eventDocRef, {dates: deleteField()});
+    const  eventDocRef = doc(this.firestore, `event/${id}`);
+    return updateDoc(eventDocRef, {dates: deleteField(), datestime: deleteField()});
   }
 
 
@@ -64,7 +65,7 @@ export class DataService {
   }
 
   createEvent(event: Event){
-    const eventRef = collection(this.firestore, 'evento');
+    const eventRef = collection(this.firestore, 'event');
     return addDoc(eventRef, event);
   }
 

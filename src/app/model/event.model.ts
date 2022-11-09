@@ -7,5 +7,6 @@ export class Event{
   category: string;
   tags: string[];
   dates: string[];
+  datestime: string[];
   username: string;
 }

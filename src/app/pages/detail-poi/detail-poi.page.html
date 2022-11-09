@@ -23,37 +23,36 @@
 
 
     <ion-card-content>
-      <ion-item routerLink="/profilo-public">
+      <ion-item routerLink="/profilo-public" lines="none">
         <ion-thumbnail slot="start">
           <img src="assets/images/pippo.png">
         </ion-thumbnail>
         <ion-label>{{event.username}}</ion-label>
       </ion-item>
-      <ion-item>
+      <ion-item lines="none">
         <ion-label>Dates</ion-label>
       </ion-item>
-      <ion-list *ngFor="let date of event.dates">
-        <ion-chip disabled="true" >
+      <ion-list *ngFor="let date of event.datestime">
+        <ion-chip disabled="true">
           <ion-label>{{date}}</ion-label>
         </ion-chip>
       </ion-list>
 
-
-
-      <ion-item>
+      <ion-item lines="none">
         <ion-label>Address</ion-label>
       </ion-item>
       <ion-chip disabled="true">
         <ion-label>{{event.address}}, {{event.city}}</ion-label>
       </ion-chip>
 
-
-
-      <ion-item>
+      <ion-item lines="none">
         <ion-label>Details</ion-label>
       </ion-item>
-      {{event.description}}
-      <ion-item>
+      <ion-textarea>
+        {{event.description}}
+      </ion-textarea>
+
+      <ion-item lines="none">
         <ion-label>Tags</ion-label>
       </ion-item>
       <ion-grid>

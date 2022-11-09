@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Evento</ion-title>
+    <ion-title>Add</ion-title>
 
     <ion-buttons slot="start">
       <ion-menu-button menuId="first2" color="dark"></ion-menu-button>
@@ -64,7 +64,7 @@
 
     <ion-item>
       <ion-select formControlName="tags" placeholder="Select tags" [multiple]="true">
-        <ion-select-option value="Fascion">Fascion</ion-select-option>
+        <ion-select-option value="Fashion">Fashion</ion-select-option>
         <ion-select-option value="Art">Art</ion-select-option>
         <ion-select-option value="Concert">Concert</ion-select-option>
         <ion-select-option value="Education">Education</ion-select-option>
@@ -76,11 +76,22 @@
         <ion-select-option value="Food">Food</ion-select-option>
       </ion-select>
     </ion-item>
-  <ion-item>
-    <ion-label position="floating">Date and Time</ion-label>
-    <ion-input [clearOnEdit]="true" placeholder="Ex: Lunedì 2 , 20:15" #date></ion-input>
-    <ion-button type="button" slot="end" (click)="addDate(date)">Add</ion-button>
-  </ion-item>
+
+
+
+        <ion-item>
+          <ion-label position="stacked">Date</ion-label>
+          <ion-input type="date" #date></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Time</ion-label>
+          <ion-input [clearInput]="true" type="text" placeholder="Ex: 20:30" #time> </ion-input>
+        </ion-item>
+
+        <ion-button type="button" slot="end" (click)="addDate(date,time)" >Add Date</ion-button>
+
+
+
 
    <ion-button type="submit"> Submit</ion-button>
  </form>

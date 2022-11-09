@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {AuthenticationService} from '../../services/authentication.service';
 import {User} from '../../model/user.model';
+import {Event} from '../../model/event.model';
 
 
 @Component({
@@ -11,6 +12,7 @@ import {User} from '../../model/user.model';
 })
 export class HomePage {
   events =[];
+  event: Event;
   user: User;
 
 
@@ -25,6 +27,9 @@ export class HomePage {
         this.dataService.getEventsByCity(this.user.city).subscribe(res2 =>{
           this.events = res2;
         });
+    });
+    this.dataService.getEventsByCity('Roma').subscribe( res =>{
+       console.log(res);
     });
   }
 
