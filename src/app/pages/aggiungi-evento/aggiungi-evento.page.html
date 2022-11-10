@@ -23,6 +23,13 @@
     <ion-label >Add foto</ion-label>
   </ion-button> -->
 
+   <ion-item>
+     <ion-select  formControlName="category" placeholder="Select a category" okText="Okay" cancelText="Cancel">
+       <ion-select-option value="Evento">Evento</ion-select-option>
+       <ion-select-option value="Luogo">Luogo</ion-select-option>
+     </ion-select>
+   </ion-item>
+
   <ion-item>
     <ion-label position="floating">Title</ion-label>
     <ion-input
@@ -55,12 +62,7 @@
       placeholder="Ex: Via Roma,1"
     ></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-select  formControlName="category" placeholder="Select a category" okText="Okay" cancelText="Cancel">
-      <ion-select-option value="Evento">Evento</ion-select-option>
-      <ion-select-option value="Luogo">Luogo</ion-select-option>
-    </ion-select>
-  </ion-item>
+
 
     <ion-item>
       <ion-select formControlName="tags" placeholder="Select tags" [multiple]="true">

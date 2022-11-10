@@ -9,7 +9,7 @@ import {
   doc,
   docData,
   deleteDoc,
-  updateDoc, deleteField, limit
+  updateDoc, deleteField, limit, orderBy
 } from '@angular/fire/firestore';
 import {collection, Query} from '@firebase/firestore';
 import {User} from '../model/user.model';
@@ -57,6 +57,7 @@ export class DataService {
     const  eventDocRef = doc(this.firestore, `event/${id}`);
     return updateDoc(eventDocRef, {dates: deleteField(), datestime: deleteField()});
   }
+
 
 
   createUser(user: User){

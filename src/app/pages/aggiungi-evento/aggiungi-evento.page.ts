@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {User} from '../../model/user.model';
 import {DatePipe} from '@angular/common';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-aggiungi-evento',
@@ -23,6 +24,7 @@ export class AggiungiEventoPage implements OnInit {
     public authService: AuthenticationService,
     public dataService: DataService,
     public router: Router,
+    private toastController: ToastController,
     public fb: FormBuilder
   ) { }
 
@@ -39,11 +41,18 @@ export class AggiungiEventoPage implements OnInit {
       username: ['']
     });
   }
-  addDate(date, time){
-    this.a  = this.datepipe.transform(date.value, 'dd/MM/YYYY');
-    this.a = this.a.concat(', ',time.value);
+  async addDate(date, time) {
+    this.a = this.datepipe.transform(date.value, 'dd/MM/YYYY');
+    this.a = this.a.concat(', ', time.value);
     this.dates1.push(date.value);
     this.datetimes.push(this.a);
+    const toast = await this.toastController.create({
+      message: 'Date added!',
+      duration: 1500,
+      position: 'bottom'
+    });
+
+    await toast.present();
     console.log(this.dates1);
     console.log(this.datetimes);
   }
