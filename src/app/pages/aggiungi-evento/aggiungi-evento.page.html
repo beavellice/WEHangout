@@ -18,10 +18,8 @@
 
 
  <form [formGroup]="eventForm" (ngSubmit)="createEvent()" >
-   <!--
-  <ion-button>
-    <ion-label >Add foto</ion-label>
-  </ion-button> -->
+
+
 
    <ion-item>
      <ion-select  formControlName="category" placeholder="Select a category" okText="Okay" cancelText="Cancel">
@@ -62,6 +60,10 @@
       placeholder="Ex: Via Roma,1"
     ></ion-input>
   </ion-item>
+
+   <ion-button (click)="uploadImage()" >
+     <ion-label >Add photo</ion-label>
+   </ion-button>
 
 
     <ion-item>

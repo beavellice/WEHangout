@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {getFirestore, provideFirestore} from '@angular/fire/firestore';
+import {provideStorage, getStorage} from '@angular/fire/storage';
 import {provideFirebaseApp, initializeApp} from '@angular/fire/app';
 
 
@@ -27,6 +28,7 @@ import {provideFirebaseApp, initializeApp} from '@angular/fire/app';
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(()=>initializeApp(environment.firebase)),
     provideFirestore(()=> getFirestore()),
+    provideStorage(()=>getStorage()),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,

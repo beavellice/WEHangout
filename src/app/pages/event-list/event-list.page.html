@@ -18,14 +18,14 @@
     <ion-item *ngFor="let event of events">
       <ion-card >
         <ion-card-header routerLink="/detail-poi" [queryParams]="{id: event.id}">
-          <img src="https://parcocolosseo.it/sito/wp-content/uploads/2018/11/02_COLOSSEO_ELZEVIRO.jpg">
+          <img *ngIf="event?.imageUrl" [src]="event.imageUrl" >
           <ion-card-title>{{event.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
          <h2><ion-icon name="business" slot="start" size="small"></ion-icon> City: <b>{{event.city}}</b></h2>
           <h2><ion-icon name="navigate" slot="start" size="small"></ion-icon> Address: <b id="address">{{event.address}}</b></h2>
-            <h2 *ngIf="(event.dates).length > 0"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
-            <ion-list *ngFor="let date of event.datestime">
+            <h2 *ngIf="event?.dates"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
+            <ion-list *ngFor="let date of event.dates">
               <!-- <ion-icon name="calendar" slot="start"></ion-icon>
                <ion-icon name="calendar-number" slot="start"></ion-icon>
               <ion-icon name="today" slot="start"></ion-icon>

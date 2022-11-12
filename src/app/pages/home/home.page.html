@@ -24,7 +24,7 @@
 <ion-content>
 
   <ion-item *ngIf="events.length === 0" lines="none">
-    <p>There aren't events in your city at the moment.</p>
+    <p>No results found.</p>
   </ion-item>
 
 
@@ -33,7 +33,7 @@
     <ion-item  >
       <ion-card routerLink="/detail-poi" [queryParams]="{id: event.id}">
         <ion-card-header>
-          <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
+          <img *ngIf="event?.imageUrl" [src]="event.imageUrl">
           <ion-card-title> {{event.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>

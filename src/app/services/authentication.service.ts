@@ -44,6 +44,11 @@ export class AuthenticationService {
     const user = at.currentUser;
    return user.email;
   }
+  getIdCurrentUser(){
+    const at  = getAuth();
+    const user = at.currentUser;
+    return user.uid;
+  }
 
 
 
