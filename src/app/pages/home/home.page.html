@@ -23,9 +23,9 @@
 
 <ion-content>
 
-  <ion-item *ngIf="events.length === 0" lines="none">
-    <p>No results found.</p>
-  </ion-item>
+  <ion-button color="dark" *ngIf="events.length === 0" disabled="true" fill="outline" id="nrButton">
+    No results found
+  </ion-button>
 
 
   <ion-list *ngFor="let event of events">
@@ -51,10 +51,10 @@
 
             <ion-label id="dates"><ion-icon name="arrow-forward-circle" slot="start"></ion-icon> {{date}}</ion-label>
           </ion-list>
-          <ion-grid>
-            <ion-row >
-              <ion-col *ngFor="let tag of event.tags">
-                <ion-chip color="danger">
+          <ion-grid [fixed]="true">
+            <ion-row>
+              <ion-col *ngFor="let tag of event.tags" size="6">
+                <ion-chip id="{{tag}}">
                   <ion-label color="dark">{{tag}}</ion-label>
                 </ion-chip>
               </ion-col>

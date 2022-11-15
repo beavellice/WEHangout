@@ -32,11 +32,11 @@
                <ion-icon name="time" slot="start"></ion-icon>-->
               <ion-label id="dates"><ion-icon name="arrow-forward-circle" slot="start"></ion-icon> {{date}}</ion-label>
             </ion-list>
-            <ion-grid>
+            <ion-grid [fixed]="true" >
               <ion-row >
-                <ion-col *ngFor="let tag of event.tags">
-                  <ion-chip color="danger">
-                    <ion-label color="dark">{{tag}}</ion-label>
+                <ion-col *ngFor="let tag of event.tags" size="6">
+                  <ion-chip id="{{tag}}">
+                    <ion-label>{{tag}}</ion-label>
                   </ion-chip>
                 </ion-col>
               </ion-row>

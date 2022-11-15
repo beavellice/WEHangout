@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DataService} from '../../services/data.service';
 import {AuthenticationService} from '../../services/authentication.service';
 import {User} from '../../model/user.model';
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-event-list',
@@ -15,9 +16,24 @@ export class EventListPage implements OnInit {
   constructor(
     private dataService: DataService,
     private authService: AuthenticationService,
+    private alertController: AlertController
   ) {}
-  deleteEvent(id){
-    return this.dataService.deleteEvent(id);
+  async deleteEvent(id) {
+    const alert = await this.alertController.create({
+      header: 'Do you want to delete the selected item?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => this.dataService.deleteEvent(id),
+        },
+      ],
+    });
+    await alert.present();
   }
 
   ngOnInit() {

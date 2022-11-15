@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {User} from '../../model/user.model';
 import {DatePipe} from '@angular/common';
-import {ToastController} from '@ionic/angular';
+import {AlertController, ToastController} from '@ionic/angular';
 import {ImageService} from '../../services/image.service';
 import {Camera, CameraResultType, CameraSource} from '@capacitor/camera';
 
@@ -27,6 +27,7 @@ export class AggiungiEventoPage implements OnInit {
     public dataService: DataService,
     public router: Router,
     private toastController: ToastController,
+    private alertController: AlertController,
     private imageService: ImageService,
     public fb: FormBuilder
   ) { }
@@ -75,10 +76,22 @@ export class AggiungiEventoPage implements OnInit {
         await toast.present();
         return this.url;
       }
+    ).catch(
+      async (error) => {
+        const alert2 = await this.alertController.create({
+          header: 'Error',
+          subHeader: 'You have to add an image!',
+          message: 'Try again',
+          buttons: ['OK'],
+        });
+        await alert2.present();
+      }
     );
   }
   createEvent(){
-    this.eventForm.value.imageUrl = this.url;
+    if(this.url){
+      this.eventForm.value.imageUrl = this.url;
+    }
     this.eventForm.value.dates = this.dateTimes;
     this.dataService.getUserByEmail(this.authService.getCurrentUser()).subscribe(res => {
       this.user = res.pop();
