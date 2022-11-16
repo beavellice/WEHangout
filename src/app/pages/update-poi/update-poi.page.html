@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Update Event</ion-title>
+
+    <ion-buttons slot="start">
+      <ion-menu-button menuId="first2" color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" >
+      <ion-button shape="round" color="dark" size="large">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <form [formGroup]="eventForm" (ngSubmit)="updateEvent()">
+    <!--
+   <ion-button>
+     <ion-label >Add foto</ion-label>
+   </ion-button> -->
+    <ion-avatar (click)="uploadImage()">
+      <img *ngIf="event?.imageUrl; else placeholder_image;" [src]="event.imageUrl" />
+      <ng-template #placeholder_image>
+        <div class="fallback">
+          <p>Image</p>
+        </div>
+      </ng-template>
+
+    </ion-avatar>
+
+    <ion-item >
+      <ion-input
+        type="text"
+        value="{{event.title}}"
+        formControlName="title"></ion-input>
+
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea
+        value="{{event.description}}"
+        formControlName="description"
+        [autoGrow]="true"
+       >   </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-select  formControlName="city" value="{{event.city}}" placeholder="{{event.city}}" okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="Roma">Roma</ion-select-option>
+        <ion-select-option value="Milano">Milano</ion-select-option>
+        <ion-select-option value="Torino">Torino</ion-select-option>
+        <ion-select-option value="Napoli">Napoli</ion-select-option>
+        <ion-select-option value="Amendola">Amendola</ion-select-option>
+        <ion-select-option value="Pescara">Pescara</ion-select-option>
+        <ion-select-option value="Catanzaro">Catanzaro</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input
+        type="text"
+        value="{{event.address}}"
+        formControlName="address"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select  formControlName="category" value="{{event.category}}" placeholder="{{event.category}}"okText="Okay" cancelText="Cancel">
+        <ion-select-option value="Evento">Evento</ion-select-option>
+        <ion-select-option value="Luogo">Luogo</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-select formControlName="tags" placeholder="Select tags"[multiple]="true" required>
+        <ion-select-option value="Faschion">Faschion</ion-select-option>
+        <ion-select-option value="Art">Art</ion-select-option>
+        <ion-select-option value="Concert">Concert</ion-select-option>
+        <ion-select-option value="Education">Education</ion-select-option>
+        <ion-select-option value="Drinks&Dance">Drinks & Dance</ion-select-option>
+        <ion-select-option value="PopCulture">Pop Culture</ion-select-option>
+        <ion-select-option value="Green">Green</ion-select-option>
+        <ion-select-option value="History">History</ion-select-option>
+        <ion-select-option value="Music">Music</ion-select-option>
+        <ion-select-option value="Food">Food</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="stacked">Date</ion-label>
+      <ion-input type="date" #date></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Time</ion-label>
+      <ion-input type="text" [clearInput]="true"  placeholder="Ex: 20:30" #time> </ion-input>
+    </ion-item>
+
+    <ion-button type="button" slot="end" (click)="addDate(date,time)">Add Date</ion-button>
+
+        <ion-item  *ngFor="let date of event.dates">
+          <ion-label>{{date}}</ion-label>
+        </ion-item>
+
+      <ion-button *ngIf="event.dates" type="button" (click)="deleteDates()" >Delete dates</ion-button>
+
+
+    <ion-input type="hidden" value="{{event.id}}" formControlName="id"></ion-input>
+
+    <ion-button type="submit"> Submit</ion-button>
+  </form>
+
+
+
+</ion-content>
+
