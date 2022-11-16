@@ -40,6 +40,14 @@ export class UpdatePoiPage implements OnInit {
     const id = this.route.snapshot.queryParamMap.get('id');
     this.dataService.getEventByID(id).subscribe( res2 => {
       this.event= res2;
+      if (this.first) {
+        if (this.event['dates']) {
+          // eslint-disable-next-line @typescript-eslint/no-shadow
+          this.formatDate = this.event['dates'].forEach(element =>
+            this.date.push(element));
+          this.first = false;
+        }
+      }
       console.log(this.event);
 
     });
