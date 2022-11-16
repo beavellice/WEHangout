@@ -9,7 +9,7 @@ import {
   doc,
   docData,
   deleteDoc,
-  updateDoc, deleteField, limit, orderBy
+  updateDoc, deleteField, limit, orderBy, setDoc
 } from '@angular/fire/firestore';
 import {collection, Query} from '@firebase/firestore';
 import {User} from '../model/user.model';
@@ -50,15 +50,18 @@ export class DataService {
     const eventDocRef = doc(this.firestore, `event/${event.id}`);
     return updateDoc(eventDocRef,
       {title: event.title, description: event.description, city: event.city, address: event.address,
-        category:event.category, tags: event.tags, dates:event.dates, datestime: event.datestime, username: event.username});
+        category:event.category, tags: event.tags, username: event.username});
+  }
+
+  updateDateEvent(id, date){
+    const eventRef = doc(this.firestore, `event/${id}`);
+    return setDoc(eventRef, { dates: date }, { merge: true });
   }
 
   deleteDates(id){
     const  eventDocRef = doc(this.firestore, `event/${id}`);
-    return updateDoc(eventDocRef, {dates: deleteField(), datestime: deleteField()});
+    return updateDoc(eventDocRef, {dates: deleteField()});
   }
-
-
 
   createUser(user: User){
     const userRef = collection(this.firestore, 'user');

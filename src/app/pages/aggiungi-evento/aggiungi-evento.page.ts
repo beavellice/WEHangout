@@ -76,16 +76,6 @@ export class AggiungiEventoPage implements OnInit {
         await toast.present();
         return this.url;
       }
-    ).catch(
-      async (error) => {
-        const alert2 = await this.alertController.create({
-          header: 'Error',
-          subHeader: 'You have to add an image!',
-          message: 'Try again',
-          buttons: ['OK'],
-        });
-        await alert2.present();
-      }
     );
   }
   createEvent(){

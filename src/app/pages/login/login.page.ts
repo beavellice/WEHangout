@@ -32,5 +32,4 @@ export class LoginPage implements OnInit {
         await alert2.present();
       });
   }
-
 }

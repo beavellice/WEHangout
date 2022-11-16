@@ -20,7 +20,8 @@ export class EventListPage implements OnInit {
   ) {}
   async deleteEvent(id) {
     const alert = await this.alertController.create({
-      header: 'Do you want to delete the selected item?',
+      header: 'Delete',
+      message: 'Do you want to delete the selected item?',
       buttons: [
         {
           text: 'Cancel',
