@@ -33,7 +33,10 @@
     <ion-item  >
       <ion-card routerLink="/detail-poi" [queryParams]="{id: event.id}">
         <ion-card-header>
-          <img *ngIf="event?.imageUrl" [src]="event.imageUrl">
+          <img *ngIf="event?.imageUrl; else placeholderImage;" [src]="event.imageUrl">
+          <ng-template #placeholderImage>
+            <img src="https://www.diegogiusti.it/wp-content/uploads/2020/06/placeholder.png"/>
+          </ng-template>
           <ion-card-title> {{event.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
@@ -41,8 +44,8 @@
             {{event.description}}
           </p>
           <h2><ion-icon name="navigate" slot="start" size="small"></ion-icon> Address: <b id="address">{{event.address}}</b></h2>
-          <h2 *ngIf="event.date"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
-          <ion-list *ngFor="let date of event.date">
+          <h2 *ngIf="(event.dates).length > 0"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
+          <ion-list *ngFor="let date of event.dates">
 
             <!-- <ion-icon name="calendar" slot="start"></ion-icon>
              <ion-icon name="calendar-number" slot="start"></ion-icon>

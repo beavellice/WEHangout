@@ -62,7 +62,8 @@
       type="text"
       formControlName="address"
       placeholder="Ex: Via Roma,1"
-    ></ion-input>
+    required="true"></ion-input>
+    <ion-note slot="error">Address required</ion-note>
   </ion-item>
 
    <ion-button (click)="uploadImage()" >
