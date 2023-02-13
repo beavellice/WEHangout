@@ -3,28 +3,77 @@ ion-item{
   margin-bottom: 7%;
   margin-top: 7%;
   --highlight-height: 0px;
-
-
-
-
 }
-ion-button{
-
-
+img{
+  border-radius: 5px;
 }
+
+#nrButton{
+  margin-top: 50%;
+  margin-left: 15%;
+}
+
 .a{
   --border-radius: 10px;
-
 }
 
 .b{
   --border-radius: 30px;
-
 }
 
 ion-searchbar{
   margin-top: 8%;
   margin-bottom: 4%;
+}
+#address{
+  font-size: small;
+}
+#dates{
+  font-size: small;
+}
+
+#History{
+  background-color: #fff2e6;
+  color: #ff881a;
+}
+
+#Concert{
+  background-color: #fff5e6;
+  color: #ff9900;
+}
+
+#Music{
+  background-color: #e6ffff;
+  color: #00ffff;
+}
+
+#Fashion{
+  background-color: #ffebe6;
+  color: #ff3300;
+}
+
+#Education{
+  background-color: #e6e6ff;
+  color: #0000cc;
+}
+
+#Art{
+  background-color: #f2e6ff;
+  color: #7b00ff;
+}
+
+#Green{
+  background-color: #ebfaeb;
+  color: #47d147;
+}
 
 
+#Food{
+  background-color: #ffe6e6;
+  color: #b30000;
+}
+
+#PopCulture{
+  background-color: #ffe6f7;
+  color: #e6009d;
 }

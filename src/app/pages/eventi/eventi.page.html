@@ -5,7 +5,7 @@
       <ion-menu-button menu="first2" color="dark"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end" >
-      <ion-button shape="round" color="dark" size="large">
+      <ion-button routerLink="/profilo" shape="round" color="dark" size="large">
         <ion-icon name="person-circle-outline"></ion-icon>
       </ion-button>
 
@@ -14,33 +14,41 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-
-
-    <ion-row>
-      <ion-col class="square">
-        <img src="assets/images/logoWH.png">
-      </ion-col>
-      <ion-col class="square">
-        <img src="assets/images/logoWH.png">
-      </ion-col>
-      <ion-col class="square">
-        <img src="assets/images/logoWH.png">
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col lass="square">
-        <img src="assets/images/logoWH.png">
-      </ion-col>
-      <ion-col lass="square">
-        <img src="assets/images/logoWH.png">
-      </ion-col>
-      <ion-col lass="square">
-        <img src="assets/images/logoWH.png">
-      </ion-col>
-    </ion-row>
-
-  </ion-grid>
-
+  <ion-button color="dark" *ngIf="events.length === 0" disabled="true" fill="outline" id="nrButton">
+    No results found
+  </ion-button>
+  <ion-list>
+    <ion-item *ngFor="let event of events">
+      <ion-card >
+        <ion-card-header routerLink="/detail-poi" [queryParams]="{id: event.id}">
+          <img *ngIf="event?.imageUrl; else placeholderImage" [src]="event.imageUrl" >
+          <ng-template #placeholderImage>
+            <img src="https://www.diegogiusti.it/wp-content/uploads/2020/06/placeholder.png"/>
+          </ng-template>
+          <ion-card-title>{{event.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h2><ion-icon name="business" slot="start" size="small"></ion-icon> City: <b>{{event.city}}</b></h2>
+          <h2><ion-icon name="navigate" slot="start" size="small"></ion-icon> Address: <b id="address">{{event.address}}</b></h2>
+          <h2 *ngIf="(event.dates).length > 0"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
+          <ion-list *ngFor="let date of event.dates">
+            <!-- <ion-icon name="calendar" slot="start"></ion-icon>
+             <ion-icon name="calendar-number" slot="start"></ion-icon>
+            <ion-icon name="today" slot="start"></ion-icon>
+             <ion-icon name="time" slot="start"></ion-icon>-->
+            <ion-label id="dates"><ion-icon name="arrow-forward-circle" slot="start"></ion-icon> {{date}}</ion-label>
+          </ion-list>
+          <ion-grid [fixed]="true" >
+            <ion-row >
+              <ion-col *ngFor="let tag of event.tags" size="6">
+                <ion-chip id="{{tag}}">
+                  <ion-label>{{tag}}</ion-label>
+                </ion-chip>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>

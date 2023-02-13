@@ -15,26 +15,30 @@
 
 <ion-content>
   <div class="top">
-    <img src="assets/images/franco.png" id="profile-picture">
-    <h3>Pippo</h3>
-    <ion-button shape="round"><ion-icon name="heart"></ion-icon>
-      Follow </ion-button>
+    <img *ngIf="user?.imageUrl; else placeholder_image;" [src]="user.imageUrl" id="profile-picture"/>
+    <ng-template #placeholder_image>
+      <img src="https://img.tineye.com/result/9c4bc086755c4683d69018eb5d182cdfc59b95cd2dffe87fb357f7294c0086c4-5?size=160" id="profile-picture">
+    </ng-template>
+    <h3>{{user['username']}}</h3>
+    <div *ngIf="disabled; else follow_block;">
+      <ion-button  [disabled]="disabled"  shape="round"><ion-icon name="checkmark"></ion-icon> </ion-button>
+      <ion-button (click)="unfollow()"  shape="clear" slot="end" size="small"><ion-icon name="close"></ion-icon> Unfollow </ion-button>
+
+    </div>
+    <ng-template #follow_block>
+      <ion-button (click)="follow()" shape="round"><ion-icon name="heart"></ion-icon> Follow </ion-button>
+    </ng-template>
+
   </div>
 
   <ion-list>
     <ion-item>
-      <ion-card>
-        <ion-card-header>
-          <img src="https://parcocolosseo.it/sito/wp-content/uploads/2018/11/02_COLOSSEO_ELZEVIRO.jpg">
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
-        </ion-card-content>
-
-
-      </ion-card>
+      <ion-label>Email:</ion-label>
+      <ion-input value="{{user['email']}}" disabled="true" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>City:</ion-label>
+      <ion-input value="{{user['city']}}" disabled="true"></ion-input>
     </ion-item>
   </ion-list>
 

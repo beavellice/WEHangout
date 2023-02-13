@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from './services/authentication.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private authService: AuthenticationService) {
+  }
+  signOut(){
+    return this.authService.signOut();
+  }
 }

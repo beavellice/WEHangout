@@ -2,7 +2,7 @@
 
   <ion-toolbar>
     <div class="search">
-      <ion-searchbar slot="center"></ion-searchbar>
+      <ion-searchbar (ionInput)="filterList(event)"  #event slot="center"></ion-searchbar>
     </div>
 
 
@@ -10,8 +10,8 @@
       <ion-menu-button menuId="first2" color="dark"></ion-menu-button>
     </ion-buttons>
 
-    <ion-buttons   slot="end" >
-      <ion-button  shape="round" color="dark" size="large">
+    <ion-buttons slot="end" >
+      <ion-button  routerLink="/profilo" shape="round" color="dark" size="large">
         <ion-icon name="person-circle-outline"></ion-icon>
       </ion-button>
 
@@ -23,42 +23,53 @@
 
 <ion-content>
 
+  <ion-button color="dark" *ngIf="events.length === 0" disabled="true" fill="outline" id="nrButton">
+    No results found
+  </ion-button>
 
-  <ion-list>
 
-    <ion-item>
-      <ion-card>
+  <ion-list *ngFor="let event of events">
+
+    <ion-item  >
+      <ion-card routerLink="/detail-poi" [queryParams]="{id: event.id}">
         <ion-card-header>
-          <img src="https://parcocolosseo.it/sito/wp-content/uploads/2018/11/02_COLOSSEO_ELZEVIRO.jpg">
-          <ion-card-title>Card Title</ion-card-title>
+          <img *ngIf="event?.imageUrl; else placeholderImage;" [src]="event.imageUrl">
+          <ng-template #placeholderImage>
+            <img src="https://www.diegogiusti.it/wp-content/uploads/2020/06/placeholder.png"/>
+          </ng-template>
+          <ion-card-title> {{event.title}}</ion-card-title>
         </ion-card-header>
         <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+          <p>
+            {{event.description}}
+          </p>
+          <h2><ion-icon name="navigate" slot="start" size="small"></ion-icon> Address: <b id="address">{{event.address}}</b></h2>
+          <h2 *ngIf="(event.dates).length > 0"><ion-icon name="calendar-clear" slot="start"></ion-icon>Dates:</h2>
+          <ion-list *ngFor="let date of event.dates">
+
+            <!-- <ion-icon name="calendar" slot="start"></ion-icon>
+             <ion-icon name="calendar-number" slot="start"></ion-icon>
+            <ion-icon name="today" slot="start"></ion-icon>
+             <ion-icon name="time" slot="start"></ion-icon>-->
+
+            <ion-label id="dates"><ion-icon name="arrow-forward-circle" slot="start"></ion-icon> {{date}}</ion-label>
+          </ion-list>
+          <ion-grid [fixed]="true">
+            <ion-row>
+              <ion-col *ngFor="let tag of event.tags" size="6">
+                <ion-chip id="{{tag}}">
+                  <ion-label color="dark">{{tag}}</ion-label>
+                </ion-chip>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
         </ion-card-content>
-
-
       </ion-card>
     </ion-item>
-    <ion-item *ngFor="let evento of eventi" (click)="dettaglioEvento(evento.id)">
 
-      <ion-card>
-        <ion-card-header>
-          <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
-          <ion-card-title> {{evento.nome}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          {{evento.info}}
-        </ion-card-content>
-      </ion-card>
-    </ion-item>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button color="danger" (click)="addEvento()">
-      <ion-icon name="map" ></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
 
 </ion-content>

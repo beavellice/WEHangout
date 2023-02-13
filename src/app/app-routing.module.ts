@@ -24,8 +24,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/seguiti/seguiti.module').then(m => m.SeguitiPageModule)
   },
   {
+    path: 'eventi-menu',
+    loadChildren: () => import('./pages/eventi-menu/eventi-menu.module').then(m => m.EventiMenuPageModule)
+  },
+  {
     path: 'eventi',
-    loadChildren: () => import('./pages/eventi/eventi.module').then( m => m.EventiPageModule)
+    loadChildren: () => import('./pages/eventi/eventi.module').then(m => m.EventiPageModule)
   },
   {
     path: 'event-list',
@@ -50,6 +54,14 @@ const routes: Routes = [
   {
     path: 'profilo-public',
     loadChildren: () => import('./pages/profilo-public/profilo-public.module').then( m => m.ProfiloPublicPageModule)
+  },
+  {
+    path: 'update-poi',
+    loadChildren: () => import('./pages/update-poi/update-poi.module').then(m => m.UpdatePoiPageModule)
+  },
+  {
+    path: 'edit-profilo',
+    loadChildren: () => import('./pages/edit-profilo/edit-profilo.module').then(m => m.EditProfiloPageModule)
   },
 ];
 
