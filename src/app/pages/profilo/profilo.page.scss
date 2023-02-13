@@ -1,20 +1,4 @@
-ion-item{
-  border-radius: 50px;
-  height: 55px;
-  box-shadow: 1px 1px 1px 0px rgb(170, 166, 166);
-  --highlight-height: 0px;
-  margin-bottom: 10%;
-  margin-top: 5%;
 
-  ion-input{
-    font-size: 18px;
-    --padding-top: 20px;
-    --padding-bottom: 15px;
-    --padding-start: 5px;
-
-  }
-
-}
 .top{
 
   margin-top: 5%;
@@ -28,4 +12,8 @@ img{
   width: 120px;
   border-radius: 100%;
   border: solid black 3px;
+}
+#editButton {
+  margin-top: 25%;
+  margin-left: 26%;
 }

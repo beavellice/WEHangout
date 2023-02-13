@@ -78,7 +78,11 @@
       </ion-select>
     </ion-item>
 
+    <ion-item  *ngFor="let date of event.dates">
+      <ion-label>{{date}}</ion-label>
+    </ion-item>
 
+    <ion-button *ngIf="event.dates" type="button" (click)="deleteDates()" class="longTextButton">Delete Dates</ion-button>
     <ion-item>
       <ion-label position="stacked">Date</ion-label>
       <ion-input type="date" #date></ion-input>
@@ -87,16 +91,7 @@
       <ion-label position="floating">Time</ion-label>
       <ion-input type="text" [clearInput]="true"  placeholder="Ex: 20:30" #time> </ion-input>
     </ion-item>
-
     <ion-button type="button" slot="end" (click)="addDate(date,time)" class="shortTextButton">Add Date</ion-button>
-
-        <ion-item  *ngFor="let date of event.dates">
-          <ion-label>{{date}}</ion-label>
-        </ion-item>
-
-      <ion-button *ngIf="event.dates" type="button" (click)="deleteDates()" class="longTextButton">Delete Dates</ion-button>
-
-
     <ion-input type="hidden" value="{{event.id}}" formControlName="id"></ion-input>
 
     <ion-button type="submit" class="shortTextButton"> Submit</ion-button>

@@ -11,29 +11,24 @@
 <ion-content>
 
   <div class="top">
-    <img src="assets/images/franco.png" >
-    <h3>Franco</h3>
+    <img *ngIf="user?.imageUrl; else placeholder_image;" [src]="user.imageUrl" />
+    <ng-template #placeholder_image>
+      <img src="https://img.tineye.com/result/9c4bc086755c4683d69018eb5d182cdfc59b95cd2dffe87fb357f7294c0086c4-5?size=160">
+    </ng-template>
+    <h3>{{user["username"]}}</h3>
+    <ion-label>Followers <ion-badge color="primary">{{followers}}</ion-badge></ion-label>
 
-    <ion-label>Followers <ion-badge color="primary">11</ion-badge></ion-label>
   </div>
 
+
   <ion-item>
-    <ion-input placeholder="placeholder" ></ion-input>
-    <ion-button color="dark" fill="clear" shape="round">
-      <ion-icon name="pencil"></ion-icon>
-    </ion-button>
+    <ion-input placeholder="placeholder" value="Email:     {{user['email']}}" disabled="true"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="placeholder"></ion-input>
-    <ion-button color="dark" fill="clear" shape="round">
-      <ion-icon name="pencil"></ion-icon>
-    </ion-button>
+    <ion-input placeholder="placeholder" value="City:     {{user['city']}}" disabled="true" ></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-input placeholder="placeholder"></ion-input>
-    <ion-button color="dark" fill="clear" shape="round">
-      <ion-icon name="pencil"></ion-icon>
-    </ion-button>
+  <ion-item id="editButton" lines="none">
+    <ion-button routerLink="/edit-profilo">Edit profile</ion-button>
   </ion-item>
 
 </ion-content>

@@ -14,6 +14,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-button color="dark" *ngIf="events.length === 0" disabled="true" fill="outline" id="nrButton">
+    No events
+  </ion-button>
   <ion-list>
     <ion-item *ngFor="let event of events">
       <ion-card >
@@ -46,37 +49,15 @@
             </ion-grid>
         </ion-card-content>
         <ion-card-content >
-          <ion-button color="danger" type="button" (click)="deleteEvent(event.id)">
+          <ion-button color="danger" type="button" id="buttonLeft" (click)="deleteEvent(event.id)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
-          <ion-button color="success" class="buttons" routerLink="/update-poi" [queryParams]="{id: event.id}">
+          <ion-button color="success" id="buttonRight" routerLink="/update-poi" [queryParams]="{id: event.id}">
             <ion-icon name="pencil"></ion-icon>
           </ion-button>
         </ion-card-content>
       </ion-card>
     </ion-item>
-
-    <ion-item>
-      <ion-card routerLink="/detail-poi">
-        <ion-card-header>
-          <img src="http://www.informasicilia.com/wp-content/uploads/2021/02/IMG-20210215-WA0005.jpg">
-          <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          . Wash your spirit clean.
-        </ion-card-content>
-        <ion-card-content >
-          <ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-          </ion-button>
-          <ion-button color="success" class="buttons">
-            <ion-icon name="pencil"></ion-icon>
-          </ion-button>
-        </ion-card-content>
-      </ion-card>
-    </ion-item>
-
 
   </ion-list>
 

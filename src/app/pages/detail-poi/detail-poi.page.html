@@ -23,11 +23,14 @@
 
 
     <ion-card-content>
-      <ion-item routerLink="/profilo-public" lines="none">
+      <ion-item routerLink="/profilo-public" [queryParams]="{user: event['user']}" lines="none">
         <ion-thumbnail slot="start">
-          <img src="assets/images/pippo.png">
+          <img *ngIf="user?.imageUrl; else placeholder_image;" [src]="user.imageUrl" id="profile-picture"/>
+          <ng-template #placeholder_image>
+            <img src="https://img.tineye.com/result/9c4bc086755c4683d69018eb5d182cdfc59b95cd2dffe87fb357f7294c0086c4-5?size=160" id="profile-picture">
+          </ng-template>
         </ion-thumbnail>
-        <ion-label>{{event["username"]}}</ion-label>
+        <ion-label>{{user["username"]}}</ion-label>
       </ion-item>
       <ion-item lines="none" >
         <ion-label>Dates</ion-label>
@@ -58,7 +61,7 @@
       <ion-grid>
         <ion-row>
           <ion-col *ngFor="let tag of event.tags">
-            <ion-chip disabled="true" >
+            <ion-chip id="{{tag}}">
               <ion-label>{{tag}}</ion-label>
             </ion-chip>
 

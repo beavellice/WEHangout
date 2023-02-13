@@ -38,6 +38,26 @@ export class ImageService {
       return null;
     }
   }
+  async updateProfileImage(name,idUser, cameraFile: Photo){
+    const id= this.authService.getIdCurrentUser();
+    let path = 'uploads/user/';
+    if(!name){
+      const now = new Date();
+      name = now.toISOString();
+    }
+    path= path.concat(id,'/',name,'.png');
+    const storageRef= ref(this.storage, path);
+    try{
+      await uploadString(storageRef, cameraFile.base64String,'base64');
+      const imageUrl = await getDownloadURL(storageRef);
+      const eventDocRef = doc(this.firestore,`user/${idUser}`);
+      await setDoc(eventDocRef, {
+        imageUrl,
+      },{ merge: true });
+    } catch (e){
+      return null;
+    }
+  }
 
 
 

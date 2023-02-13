@@ -10,13 +10,16 @@ import {Event} from '../../model/event.model';
 })
 export class DetailPoiPage implements OnInit {
   event= [];
-
+  user=[];
   constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.queryParamMap.get('id');
     this.dataService.getEventByID(id).subscribe( res => {
       this.event = res;
+      this.dataService.getUserByEmail(this.event['user']).subscribe(res2 => {
+        this.user = res2.pop();
+      });
     });
   }
 

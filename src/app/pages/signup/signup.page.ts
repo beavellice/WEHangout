@@ -26,7 +26,8 @@ export class SignupPage implements OnInit {
       username: [''],
       email: [''],
       password: [''],
-      city: ['']
+      city: [''],
+      followers: 0,
     });
   }
   signUp(email, password) {

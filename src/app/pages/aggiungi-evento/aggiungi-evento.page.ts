@@ -42,6 +42,7 @@ export class AggiungiEventoPage implements OnInit {
       tags: [''],
       dates: [''],
       username: [''],
+      user: [''],
       imageUrl: [],
     });
   }
@@ -86,6 +87,7 @@ export class AggiungiEventoPage implements OnInit {
     this.dataService.getUserByEmail(this.authService.getCurrentUser()).subscribe(res => {
       this.user = res.pop();
       this.eventForm.value.username= this.user.username;
+      this.eventForm.value.user= this.user.email;
       this.dataService.createEvent(this.eventForm.value);
       this.router.navigateByUrl('/event-list',{replaceUrl:true});
     });

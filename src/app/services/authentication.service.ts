@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/member-ordering */
+
 import {Injectable, NgZone} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
@@ -18,18 +18,7 @@ export class AuthenticationService {
     public router: Router,
     public ngZone: NgZone
   ) {
-    /*
-    this.ngFireAuth.authState.subscribe((user) => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
-      }
-    });
-     */
+    
   }
   // Login in with email/password
   signIn(email, password) {
@@ -51,13 +40,9 @@ export class AuthenticationService {
   }
 
 
-
-  // Store user in localStorage
-
   // Sign-out
   async signOut() {
     await this.ngFireAuth.signOut();
-    //localStorage.removeItem('user');
     this.router.navigate(['login']);
   }
 }
